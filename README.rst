@@ -1,5 +1,5 @@
-doctest-prefix-all-the-literals
-===============================
+doctest-prefix-all-the-strings
+==============================
 
 This package is an experiment in writing doctests that involve strings,
 and that are cross-compatible with Python 2.6, 2.7, and 3.3+.
@@ -83,6 +83,10 @@ If you're ready to run screaming at the above, there are alternatives e.g.
 
   .. code:: python
 
-       >>> bytearray(otherfunc())
+       >>> bytearray(bytesfunc())
        bytearray(b'I return a byte (binary) string')
 
+- Support Python 3.x exclusively
+- Use ``print(bytesfunc().decode('ascii'))`` and choose your input values carefully
+- Use ``#doctest: +SKIP``
+- Use ``#doctest: +ELLIPSIS``
