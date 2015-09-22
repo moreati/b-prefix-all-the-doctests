@@ -1,7 +1,7 @@
 pretext
 =======
 
-.. image:: https://travis-ci.org/moreati/b-prefix-all-the-doctests
+.. image:: https://travis-ci.org/moreati/b-prefix-all-the-doctests.svg
     :target: https://travis-ci.org/moreati/b-prefix-all-the-doctests
 
 This package is an experiment in writing doctests that involve strings,
