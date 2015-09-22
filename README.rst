@@ -1,5 +1,5 @@
-doctest-prefix-all-the-strings
-==============================
+pretext
+=======
 
 .. image:: https://travis-ci.org/moreati/pretext
     :target: https://travis-ci.org/moreati/pretext
@@ -55,7 +55,7 @@ Proof of concept:
 
     r"""
     >>> import sys
-    >>> import bar
+    >>> import pretext
     >>> myrepr = bar.PrefixRepr()
     >>> repr = myrepr.repr
     >>> def _displayhook(value):
