@@ -1,6 +1,9 @@
 doctest-prefix-all-the-strings
 ==============================
 
+.. image:: https://travis-ci.org/moreati/pretext
+    :target: https://travis-ci.org/moreati/pretext
+
 This package is an experiment in writing doctests that involve strings,
 and that are cross-compatible with Python 2.6, 2.7, and 3.3+.
 
