@@ -10,7 +10,7 @@ def read(fname, encoding='utf-8'):
 
 setup(
     name='pretext',
-    version='0',
+    version='0.0.1',
 
     description='Use doctest with bytes, str & unicode on Python 2.x and 3.x',
     long_description=read('README.rst'),
