@@ -7,7 +7,14 @@ except ImportError:
 
 import sys
 
+__all__ = [
+    'PrefixRepr',
+]
+
+
 class PrefixRepr(reprlib.Repr):
+    """A Repr variant that always prefixes bytes/str/unicode literals
+    """
     def __init__(self):
         self._old_repr = repr
 
@@ -23,6 +30,8 @@ class PrefixRepr(reprlib.Repr):
         self.maxother = sys.maxsize
 
     def repr_str(self, obj, level):
+        """Return the repr of a string, prefixed with b or u
+        """
         if str is bytes:
             # Python 2.x
             return b'b%s' % (self._old_repr(obj),)

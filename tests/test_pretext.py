@@ -1,7 +1,7 @@
 r"""
 >>> import sys
->>> import bar
->>> myrepr = bar.PrefixRepr()
+>>> import pretext
+>>> myrepr = pretext.PrefixRepr()
 >>> repr = myrepr.repr
 >>> def _displayhook(value):
 ...     if value is not None:
@@ -23,8 +23,8 @@ b"'"
 def split(s):
     """
     >>> import sys
-    >>> import bar
-    >>> myrepr = bar.PrefixRepr()
+    >>> import pretext
+    >>> myrepr = pretext.PrefixRepr()
     >>> repr = myrepr.repr
     >>> def _displayhook(value):
     ...     if value is not None:
@@ -43,8 +43,8 @@ def C(object):
     def join(self, seq):
         """
         >>> import sys
-        >>> import bar
-        >>> myrepr = bar.PrefixRepr()
+        >>> import pretext
+        >>> myrepr = pretext.PrefixRepr()
         >>> repr = myrepr.repr
         >>> def _displayhook(value):
         ...     if value is not None:
