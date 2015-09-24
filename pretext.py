@@ -118,3 +118,8 @@ class UnicodeRepr(PrefixRepr):
         assert r[0] == 'b'
         return r[1:]
 
+
+prepr = PrefixRepr().repr
+brepr = BytesRepr().repr
+urepr = UnicodeRepr().repr
+
