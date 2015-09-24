@@ -10,6 +10,9 @@ python:
     - 'pypy'
     - 'pypy3'
 
+install:
+    pip install -rrequirements.txt .
+
 script:
     - python -m doctest pretext.py
     - python -m doctest tests/test_prefixrepr.py
