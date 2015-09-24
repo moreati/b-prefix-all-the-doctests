@@ -22,6 +22,7 @@ setup(
     license='Apache Software License 2.0',
 
     py_modules=['pretext'],
+    include_package_data=True,
 
     classifiers=[
         'Development Status :: 3 - Alpha',

@@ -1,0 +1,9 @@
+include LICENSE
+include *.cfg
+include *.ini
+include *.rst
+include *.yml
+
+graft tests
+
+global-exclude *.py[cod] __pycache__ *.so *.dylib
