@@ -1,6 +1,11 @@
 from __future__ import print_function
 
 try:
+    import builtins
+except ImportError:
+    import __builtin__ as builtins
+
+try:
     import reprlib
 except ImportError:
     import repr as reprlib
@@ -122,4 +127,31 @@ class UnicodeRepr(PrefixRepr):
 prepr = PrefixRepr().repr
 brepr = BytesRepr().repr
 urepr = UnicodeRepr().repr
+
+def _displayhook(value, repr_fn):
+    if value is None:
+        return
+    # Set '_' to None to avoid recursion
+    builtins._ = None
+    text = repr_fn(value)
+    try:
+        sys.stdout.write(text)
+    except UnicodeEncodeError:
+        bytes = text.encode(sys.stdout.encoding, 'backslashreplace')
+        if hasattr(sys.stdout, 'buffer'):
+            sys.stdout.buffer.write(bytes)
+        else:
+            text = bytes.decode(sys.stdout.encoding, 'strict')
+            sys.stdout.write(text)
+    sys.stdout.write("\n")
+    builtins._ = value
+
+def pdisplayhook(value):
+    _displayhook(value, prepr)
+
+def bdisplayhook(value):
+    _displayhook(value, brepr)
+
+def udisplayhook(value):
+    _displayhook(value, urepr)
 
