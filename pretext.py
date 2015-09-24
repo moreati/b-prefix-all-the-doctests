@@ -34,6 +34,7 @@ class Repr(reprlib.Repr):
         self.maxarray = sys.maxsize
         self.maxlong = sys.maxsize
         self.maxstring = sys.maxsize
+        self.maxlong = sys.maxsize
         self.maxother = sys.maxsize
 
 
