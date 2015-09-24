@@ -11,5 +11,8 @@ python:
     - 'pypy3'
 
 script:
-    - python -m doctest tests/test_pretext.py
+    - python -m doctest pretext.py
+    - python -m doctest tests/test_prefixrepr.py
+    - python -m doctest tests/test_displayhook.py
+    - python tests/test_xrepr.py
 
