@@ -4,13 +4,24 @@ pretext
 .. image:: https://travis-ci.org/moreati/b-prefix-all-the-doctests.svg
     :target: https://travis-ci.org/moreati/b-prefix-all-the-doctests
 
-This package is an experiment in writing doctests that involve strings,
-and that are cross-compatible with Python 2.6, 2.7, and 3.3+.
+This package makes it easy to write doctests that involve strings, and
+still have those doctests work with Python 2.6, 2.7, and 3.3+.
+
+Just `import pretext` and call `pretext.activate()`. By default Python 3.x
+`repr()` behaviour is used
+
+.. code:: python
+
+    >>> import pretext; pretext.activate()
+    >>> b'Now strings have a consistant repr on Python 2.x & 3.x'
+    b'Now strings have a consistant repr on all Python versions'
+    >>> u'Unicode strings & nested strings work too'.split()
+    ['Unicode', 'strings', '&', 'nested', 'strings', 'work', 'too']
 
 The problem
 -----------
 
-Suppose you have the following doctest
+Suppose you have the following doctest, and you aren't using pretext
 
 .. code:: python
 
@@ -20,11 +31,12 @@ Suppose you have the following doctest
     >>> bytesfunc()
     b'I return a byte (binary) string'
 
-On Python 3.x the first test case will fail, because doctest will compare
-``repr(textfunc())`` which will not include a ``u''`` prefix.
+The ``textfunc()`` case will pass on Python 2.x, but fail on Python 3.x.
+Because doctest will compare ``repr(textfunc())`` with the expected value,
+which on Python 3.x will not include a ``u''`` prefix.
 
-On Python 2.x the second test will fail, because ``repr(bytesfunc())`` will
-not include the ``b''`` prefix.
+The ``bytesfunc()`` case will fail on Python 2.x and pass on Python 3.x.
+Because on Python 2.x ``repr(bytesfunc())`` won't include the ``b''`` prefix.
 
 If the tests cases are editted to remove the prefixes, i.e.
 
