@@ -13,6 +13,7 @@ except ImportError:
 import sys
 
 __all__ = [
+    'activate',
     'Repr',
     'PrefixRepr',
     'BytesRepr',
@@ -47,6 +48,7 @@ class Repr(reprlib.Repr):
         self.maxlong = sys.maxsize
         self.maxstring = sys.maxsize
         self.maxlong = sys.maxsize
+        self.maxtuple = sys.maxsize
         self.maxother = sys.maxsize
 
 
@@ -76,6 +78,12 @@ class PrefixRepr(Repr):
         else:
             # Python 3.x
             return u'u%s' % (self._old_repr(obj),)
+
+    def repr_bytes(self, obj, level):
+        return self._old_repr(obj)
+
+    def repr_unicode(self, obj, level):
+        return self._old_repr(obj)
 
 
 class BytesRepr(PrefixRepr):
@@ -159,4 +167,28 @@ def bdisplayhook(value):
 
 def udisplayhook(value):
     _displayhook(value, urepr)
+
+def activate(repr=brepr, displayhook=bdisplayhook):
+    """Replace the builtin repr & sys.displayhook with versions that prefix
+
+    The defaults causes the repr() of any string to be the same as it would
+    on Python 3.x. So after `activate()` is called `repr(b'foo') == "b'foo'"`
+    and `repr(u'bar') == "'bar'"`. Even on Python 2.x.
+
+    >>> import pretext; pretext.activate()
+    >>> b'Now your byte-string doctests can work on Python 2.6, 2.7, & 3.3+'
+    b'Now your byte-string doctests can work on Python 2.6, 2.7, & 3.3+'
+    >>> u"By default unicode strings aren't prefixed, just like on Python 3.x"
+    "By default unicode strings aren't prefixed, just like on Python 3.x"
+
+    >>> pretext.activate(pretext.urepr, pretext.udisplayhook)
+    >>> [b'However you can choose Python 2.x', u'behaviour if you prefer']
+    ['However you can choose Python 2.x', u'behaviour if you prefer']
+
+    >>> pretext.activate(pretext.prepr, pretext.pdisplayhook)
+    >>> (b'Or prefix all the strings', u'all the time')
+    (b'Or prefix all the strings', u'all the time')
+    """
+    builtins.repr = repr
+    sys.displayhook = displayhook
 
