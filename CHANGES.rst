@@ -2,6 +2,11 @@
 Changelog
 =========
 
+0.0.3
+-----
+
+* Added ``pretext.activate()`` for instant gratification
+
 0.0.2
 -----
 
