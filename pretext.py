@@ -17,6 +17,11 @@ __all__ = [
     'PrefixRepr',
     'BytesRepr',
     'UnicodeRepr',
+    'prepr',
+    'urepr',
+    'pdisplayhook',
+    'bdisplayhook',
+    'udisplayhook',
 ]
 
 
