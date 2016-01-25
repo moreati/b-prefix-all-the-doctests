@@ -31,12 +31,13 @@ Suppose you have the following doctest, and you aren't using pretext
     >>> bytesfunc()
     b'I return a byte (binary) string'
 
-The ``textfunc()`` case will pass on Python 2.x, but fail on Python 3.x.
-Because doctest will compare ``repr(textfunc())`` with the expected value,
-which on Python 3.x will not include a ``u''`` prefix.
+On Python 2.x ``textfunc()`` will pass. On Python 3.x it will fail.
+This is because doctest compares the expected value with ``repr(textfunc())``,
+and on Python 3.x the `repr()` will not include a ``u''`` prefix.
 
-The ``bytesfunc()`` case will fail on Python 2.x and pass on Python 3.x.
-Because on Python 2.x ``repr(bytesfunc())`` won't include the ``b''`` prefix.
+On Python 2.x ``bytesfunc()`` will fail. On Python 3.x it will pass.
+This is because on Python 2.x ``repr(bytesfunc())`` won't include the ``b''``
+prefix.
 
 If the tests cases are editted to remove the prefixes, i.e.
 
