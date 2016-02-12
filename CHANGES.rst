@@ -2,6 +2,12 @@
 Changelog
 =========
 
+0.0.4
+-----
+
+* Fixed #2: `repr` of `bool` instances [thanks to John Vandenberg]
+* Changed development status to Beta
+
 0.0.3
 -----
 
