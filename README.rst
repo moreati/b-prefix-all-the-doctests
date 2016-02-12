@@ -106,3 +106,10 @@ If you're ready to run screaming at the above, there are alternatives e.g.
 - Use ``print(bytesfunc().decode('ascii'))`` and choose your input values carefully
 - Use ``#doctest: +SKIP``
 - Use ``#doctest: +ELLIPSIS``
+
+For HTML or XML in a doctest `lxml`_ includes the modules
+`lxml.html.usedoctest`_ and `lxml.usedoctext`_.
+
+.. _lxml: https://pypi.python.org/pypi/lxml
+.. _lxml.html.usedoctest: http://lxml.de/api/lxml.html.usedoctest-module.html
+.. _lxml.usedoctest: http://lxml.de/api/lxml.usedoctest-module.html
