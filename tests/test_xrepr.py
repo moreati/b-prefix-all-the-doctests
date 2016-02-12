@@ -57,6 +57,39 @@ class Python3TestCase(unittest.TestCase):
         self.assertEqual('u'+repr(s), prepr(s))
 
 
+class NoChangeTestCase(unittest.TestCase):
+
+    @given(st.none())
+    def test_none(self, s):
+        self.assertEqual(repr(s), brepr(s))
+        self.assertEqual(repr(s), prepr(s))
+        self.assertEqual(repr(s), urepr(s))
+
+    @given(st.booleans())
+    def test_bool(self, s):
+        self.assertEqual(repr(s), brepr(s))
+        self.assertEqual(repr(s), prepr(s))
+        self.assertEqual(repr(s), urepr(s))
+
+    @given(st.integers())
+    def test_int(self, s):
+        self.assertEqual(repr(s), brepr(s))
+        self.assertEqual(repr(s), prepr(s))
+        self.assertEqual(repr(s), urepr(s))
+
+    @given(st.floats())
+    def test_float(self, s):
+        self.assertEqual(repr(s), brepr(s))
+        self.assertEqual(repr(s), prepr(s))
+        self.assertEqual(repr(s), urepr(s))
+
+    @given(st.complex_numbers())
+    def test_complex(self, s):
+        self.assertEqual(repr(s), brepr(s))
+        self.assertEqual(repr(s), prepr(s))
+        self.assertEqual(repr(s), urepr(s))
+
+
 if __name__ == '__main__':
     unittest.main()
 

@@ -51,6 +51,9 @@ class Repr(reprlib.Repr):
         self.maxtuple = sys.maxsize
         self.maxother = sys.maxsize
 
+    def repr_bool(self, obj, level):
+        return '%s' % obj
+
 
 class PrefixRepr(Repr):
     """A Repr that always prefixes any string, and doesn't truncate
