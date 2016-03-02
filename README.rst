@@ -91,7 +91,11 @@ Proof of concept:
 Alternatives
 ------------
 
-If you're ready to run screaming at the above, there are alternatives e.g.
+If you're ready to run screaming at the above, there are alternatives
+
+- pytest_ provides ``#doctest: ALLOW_UNICODE`` and (from 2.9.0) ``#doctest: ALLOW_BYTES`` directives_
+
+- `lxml`_ includes `lxml.html.usedoctest`_ and `lxml.usedoctest`_ modules for HTML and XML.
 
 - Wrap byte-string returns in ``bytearray()``.
   ``repr(bytearray(b'abc')) == "bytearray(b'abc'))"`` on all versions of
@@ -107,9 +111,8 @@ If you're ready to run screaming at the above, there are alternatives e.g.
 - Use ``#doctest: +SKIP``
 - Use ``#doctest: +ELLIPSIS``
 
-For HTML or XML in a doctest `lxml`_ includes the modules
-`lxml.html.usedoctest`_ and `lxml.usedoctext`_.
-
+.. _pytest: http://pytest.org
+.. _directives: http://pytest.org/latest/doctest.html
 .. _lxml: https://pypi.python.org/pypi/lxml
 .. _lxml.html.usedoctest: http://lxml.de/api/lxml.html.usedoctest-module.html
 .. _lxml.usedoctest: http://lxml.de/api/lxml.usedoctest-module.html
