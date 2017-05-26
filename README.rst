@@ -4,8 +4,7 @@ pretext
 .. image:: https://travis-ci.org/moreati/b-prefix-all-the-doctests.svg
     :target: https://travis-ci.org/moreati/b-prefix-all-the-doctests
 
-This package makes it easy to write doctests that involve strings, and
-still have those doctests work with Python 2.6, 2.7, and 3.3+.
+Write doctests with strings that work in Python 2.x *and* Python 3.x.
 
 Just `import pretext` and call `pretext.activate()`. By default Python 3.x
 `repr()` behaviour is used
@@ -13,44 +12,67 @@ Just `import pretext` and call `pretext.activate()`. By default Python 3.x
 .. code:: python
 
     >>> import pretext; pretext.activate()
-    >>> b'Now strings have a consistant repr on Python 2.x & 3.x'
-    b'Now strings have a consistant repr on all Python versions'
+    >>> b'Byte strings now have the same repr on Python 2.x & 3.x'
+    b'Byte strings now have the same repr on Python 2.x & 3.x'
     >>> u'Unicode strings & nested strings work too'.split()
     ['Unicode', 'strings', '&', 'nested', 'strings', 'work', 'too']
 
 The problem
 -----------
 
-Suppose you have the following doctest, and you aren't using pretext
+Suppose you have the following functions and doctests
 
 .. code:: python
 
-    >>> textfunc()
-    u'I return a textual (unicode) string'
+    def textfunc():
+        """
+        >>> textfunc()
+        u'A unicode string'
+        """
+        return u'A unicode string'
 
-    >>> bytesfunc()
-    b'I return a byte (binary) string'
+    def bytesfunc()
+        """
+        >>> bytesfunc()
+        b'A byte string'
+        """
+        return b'A byte string'
 
-On Python 2.x ``textfunc()`` will pass. On Python 3.x it will fail.
-This is because doctest compares the expected value with ``repr(textfunc())``,
-and on Python 3.x the `repr()` will not include a ``u''`` prefix.
+Without pretext
 
-On Python 2.x ``bytesfunc()`` will fail. On Python 3.x it will pass.
-This is because on Python 2.x ``repr(bytesfunc())`` won't include the ``b''``
-prefix.
+- ``textfunc()`` will pass on Python 2.x, but fail on 3.x.
+- ``bytesfunc()`` will fail on Python 2.x, but pass on 3.x.
 
-If the tests cases are editted to remove the prefixes, i.e.
+This is because doctest compares the expected result (from the doc-string)
+with the ``repr()`` of the returned value.
+
+- ``repr()`` of a textual string includes the ``u''`` prefix in Python 2.x,
+  but 3.x excludes it.
+- ``repr()`` of a byte string excludes the ``b''`` prefix on Python 2.x,
+  but 3.x includes it.
+
+If the doctests are editted to remove the prefixes
 
 .. code:: python
 
-    >>> textfunc()
-    'I return a textual (unicode) string'
+    def textfunc():
+        """
+        >>> textfunc()
+        'A unicode string'
+        """
+        return u'A unicode string'
 
-    >>> bytesfunc()
-    'I return a byte (binary) string'
+    def bytesfunc()
+        """
+        >>> bytesfunc()
+        'A byte string'
+        """
+        return b'A byte string'
 
-then the failures will be reversed. ``textfunc()`` will now fail on Python 2.x,
-``bytesfunc()`` will fail on Python 3.x.
+then the failures will be reversed
+
+- ``textfunc()`` will now fail on Python 2.x, but pass on 3.x.
+- ``bytesfunc()`` will now pass on Python 2.x, but fail on 3.x.
 
 The hack
 --------
