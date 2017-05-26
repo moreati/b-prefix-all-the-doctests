@@ -46,10 +46,8 @@ Without pretext
 This is because doctest compares the expected result (from the doc-string)
 with the ``repr()`` of the returned value.
 
-- ``repr()`` of a textual string includes the ``u''`` prefix in Python 2.x,
-  but 3.x excludes it.
-- ``repr()`` of a byte string excludes the ``b''`` prefix on Python 2.x,
-  but 3.x includes it.
+- ``repr(u'foo')`` returns ``u'foo'`` on Python 2.x, but ``'foo'`` on 3.x
+- ``repr(b'bar')`` returns ``'bar'`` on Python 2.x, but ``b'bar'`` on 3.x
 
 If the doctests are editted to remove the prefixes
 
