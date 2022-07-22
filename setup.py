@@ -14,6 +14,7 @@ setup(
 
     description='Use doctest with bytes, str & unicode on Python 2.x and 3.x',
     long_description=read('README.rst'),
+    long_description_content_type='text/x-rst',
     url='https://github.com/moreati/b-prefix-all-the-doctests',
 
     author='Alex Willmer',
@@ -25,7 +26,7 @@ setup(
     include_package_data=True,
 
     classifiers=[
-        'Development Status :: 4 - Beta',
+        'Development Status :: 7 - Inactive',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: Apache Software License',
         'Operating System :: OS Independent',

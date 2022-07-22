@@ -2,6 +2,7 @@ include LICENSE
 include *.cfg
 include *.ini
 include *.rst
+include *.txt
 include *.yml
 
 graft tests
