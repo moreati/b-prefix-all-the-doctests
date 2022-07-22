@@ -2,6 +2,17 @@
 Changelog
 =========
 
+0.0.5
+-----
+
+.. attention:: This will be the final release of this module.
+    I've agreed to transfer the package name to the `PreTeXt books`_ project.
+    To continue using this module pin you version to `pretext<0.1`.
+
+* Documentation fixups
+
+.. _PreTeXt books: https://pretextbook.org/
+
 0.0.4
 -----
 

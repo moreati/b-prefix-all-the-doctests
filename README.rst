@@ -4,6 +4,10 @@ pretext
 .. image:: https://travis-ci.org/moreati/b-prefix-all-the-doctests.svg
     :target: https://travis-ci.org/moreati/b-prefix-all-the-doctests
 
+.. attention:: pretext 0.0.5 will be the final release of this module.
+    I've agreed to transfer the package name to the `PreTeXt books`_ project.
+    To continue using this module pin you version to `pretext<0.1`.
+
 Write doctests with strings that work in Python 2.x *and* Python 3.x.
 
 Just `import pretext` and call `pretext.activate()`. By default Python 3.x
@@ -16,6 +20,8 @@ Just `import pretext` and call `pretext.activate()`. By default Python 3.x
     b'Byte strings now have the same repr on Python 2.x & 3.x'
     >>> u'Unicode strings & nested strings work too'.split()
     ['Unicode', 'strings', '&', 'nested', 'strings', 'work', 'too']
+
+.. _PreTeXt books: https://pretextbook.org/
 
 The problem
 -----------
